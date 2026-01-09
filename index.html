@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案件 0924：数据同步系统</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-navy: #0b1622;
+            --bg-glow: #162a4a;
+        }
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background-color: var(--bg-navy);
+            background-image: 
+                radial-gradient(circle at center, var(--bg-glow) 0%, var(--bg-navy) 100%),
+                url('https://www.transparenttextures.com/patterns/stardust.png');
+            background-attachment: fixed;
+            color: #c9d1d9;
+            margin: 0;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        .scanlines::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.01), rgba(0, 255, 0, 0.005), rgba(0, 0, 255, 0.01));
+            background-size: 100% 3px, 3px 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.8;
+        }
+
+        @keyframes scan-move {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100vh); }
+        }
+        .scan-bar {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 150px;
+            background: linear-gradient(to bottom, transparent, rgba(0, 210, 255, 0.02), transparent);
+            pointer-events: none;
+            z-index: 9998;
+            animation: scan-move 15s linear infinite;
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); }
+
+        .terminal-collapse::after {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #fff;
+            animation: line-collapse 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+            z-index: 10000;
+        }
+        @keyframes line-collapse {
+            0% { transform: scaleY(1); opacity: 1; }
+            50% { transform: scaleY(0.005); opacity: 1; }
+            100% { transform: scaleY(0); opacity: 0; }
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.11.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="scanlines">
+    <div class="scan-bar"></div>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
