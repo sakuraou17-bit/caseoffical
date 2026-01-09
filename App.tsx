@@ -8,6 +8,7 @@ import Notebook from './pages/Notebook';
 import Records from './pages/Records';
 import Final from './pages/Final';
 import Intro from './pages/Intro';
+import GeminiTerminal from './components/GeminiTerminal';
 import { GameState } from './types';
 
 const GameRouter: React.FC<{
@@ -65,6 +66,8 @@ const GameRouter: React.FC<{
           <Route path="/final" element={<Final gameState={gameState} setGameState={setGameState} />} />
         </Routes>
       </main>
+
+      {!isEndingActive && <GeminiTerminal gameState={gameState} />}
     </div>
   );
 };
