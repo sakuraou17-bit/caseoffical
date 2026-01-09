@@ -66,7 +66,7 @@ const GeminiTerminal: React.FC<Props> = ({ gameState }) => {
             <button onClick={() => setIsOpen(false)} className="text-blue-900 hover:text-blue-400">✕</button>
           </div>
           <div ref={scrollRef} className="flex-grow overflow-y-auto p-4 space-y-4 custom-scrollbar bg-[rgba(0,10,20,0.8)]">
-            <div className="text-[10px] text-blue-800 mono">>> 初始化链路... OK.</div>
+            <div className="text-[10px] text-blue-800 mono">{'>>'} 初始化链路... OK.</div>
             {messages.map((m, i) => (
               <div key={i} className={`text-xs mono ${m.role === 'user' ? 'text-gray-400 text-right' : 'text-blue-400'}`}>
                 <span className="opacity-50">{m.role === 'user' ? 'USER: ' : 'AI: '}</span>
