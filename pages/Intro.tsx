@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { GameState } from '../types';
 
@@ -61,7 +62,7 @@ const Intro: React.FC<Props> = ({ setGameState }) => {
         {step === 1 && (
           <div className="space-y-8 animate-fadeIn">
             <div className="border-l-2 border-blue-500 pl-6 space-y-2">
-              <p className="text-sm font-bold text-blue-400 mono">>> NEW_CASE_RECEIVED</p>
+              <p className="text-sm font-bold text-blue-400 mono">{'>>'} NEW_CASE_RECEIVED</p>
               <p className="text-lg">报案人：周茵</p>
               <p className="text-lg">报案内容：家属失踪</p>
             </div>
